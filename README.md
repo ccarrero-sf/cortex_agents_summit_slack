@@ -1,7 +1,9 @@
 # Building Cortex Agents Hands-On Lab Slack Integration
 
 
-1. We recommend for testing you create your own private slack channel:
+## 1. Create your own Slack Channel
+
+We recommend for testing you create your own private slack channel:
 
 [Use this link to Create it](https://slack.com/get-started#create)
 
@@ -21,9 +23,23 @@ With this you should be able to have your first Slack Channel!
 
 ![image](img/12_slack_channel.png)
 
-2. Create a Slack App.
+## 2. Create a Slack App.
 
 This is the App that will be calling Cortex Agents API.
 
 Click on [Create Apps](https://api.slack.com/apps?new_app=1)
+
+Click on Create New App -> Select From scratch
+
+Give the app a name and select the workspace you just created:
+
+![image](img/13_create_app.png)
+
+You will get in the the slack api configuration of your app with something like this:
+
+![image](img/14_slack_api.png)
+
+
+
+
 
