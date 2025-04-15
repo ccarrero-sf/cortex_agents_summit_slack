@@ -71,6 +71,21 @@ Navigate to Socket Mode on the left side menu and toggle to enable.
 
 ![image](img/21_socket_mode.png)
 
+Enable Event Subcriptions:
+
+Go to **Event Subcriptions** and toggle the switch labeled **Enabled events**
+
+![image](img/21_enable_events.png)
+
+Navigate to Event Subscriptions on the left sidebar and toggle to enable. Under Subscribe to Bot Events, you can add events for your bot to respond to. There are four events related to messages:
+
+message.channels listens for messages in public channels that your app is added to
+message.groups listens for messages in 🔒 private channels that your app is added to
+message.im listens for messages in your app's DMs with users
+message.mpim listens for messages in multi-person DMs that your app is added to
+If you want your bot to listen to messages from everywhere it is added to, choose all four message events. After you’ve selected the events you want your bot to listen to, click the green Save Changes button.
+
+
 ## Setup your Slack App
 ### Clone this repository
 
