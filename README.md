@@ -51,6 +51,8 @@ Scroll up to the top of the **OAuth & Permissions** page and click **Install App
 
 Once you authorize the installation, you'll land on the OAuth & Permissions page and see a Bot User OAuth Access Token.
 
+Keep this token as you will use it later in the .env file for SLACK_BOT_TOKEN
+
 ![image](img/17_authorized.png)
 
 Then head over to Basic Information and scroll down under the App Token section and click Generate Token and Scopes to generate an app-level token. Add the connections:write scope to this token and save the generated xapp token, we'll use both these tokens in just a moment.
@@ -61,7 +63,7 @@ Give it a name and generate
 
 ![image](img/19_app_token.png)
 
-Copy the token generated as we will be using it
+Copy the token generated as we will be using it later under SLACK_APP_TOKEN in your env environment.
 
 ![image](img/20_copy_token.png)
 
@@ -129,7 +131,12 @@ ALTER USER example_user SET RSA_PUBLIC_KEY='MIIBIjANBgkqh...';
 
 ### Define your App Variables
 
-In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before:
+In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before. Note that you have generated SLACK_APP_TOKEN and SLACK_BOT_TOKEN above.
+
+Your account details are available when you select your account (bottom left) and click on account details:
+
+![image](img/22_account_details.png)
+
 
 ```code
 DEMO_DATABASE='CC_CORTEX_AGENTS_SUMMIT'

@@ -28,7 +28,8 @@ SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 AGENT_ENDPOINT = os.getenv("AGENT_ENDPOINT")
 SEMANTIC_MODEL = os.getenv("SEMANTIC_MODEL")
-SEARCH_SERVICE = os.getenv("SEARCH_SERVICE")
+CORTEX_SEARCH_BIKES = os.getenv("CORTEX_SEARCH_BIKES")
+CORTEX_SEARCH_SKI = os.getenv("CORTEX_SEARCH_SKI")
 RSA_PRIVATE_KEY_PATH = os.getenv("RSA_PRIVATE_KEY_PATH")
 MODEL = os.getenv("MODEL")
 
@@ -279,7 +280,8 @@ def init():
 
     cortex_app = cortex_chat.CortexChat(
         AGENT_ENDPOINT, 
-        SEARCH_SERVICE,
+        CORTEX_SEARCH_BIKES,
+        CORTEX_SEARCH_SKI,
         SEMANTIC_MODEL,
         MODEL, 
         ACCOUNT,
