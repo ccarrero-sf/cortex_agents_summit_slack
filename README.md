@@ -39,6 +39,35 @@ You will get in the the slack api configuration of your app with something like 
 
 ![image](img/14_slack_api.png)
 
+Navigate to the **OAuth & Permissions** on the left sidebar and scroll down to the **Bot Token Scopes** section. Click **Add an OAuth Scope**.
+
+![image](img/15_bot_token.png)
+
+For now, we'll just add one scope: **chat:write**. This grants your app the permission to post messages in channels it's a member of.
+
+Scroll up to the top of the **OAuth & Permissions** page and click **Install App** to Workspace. You'll be led through Slack's OAuth UI, where you should allow your app to be installed to your development workspace.
+
+![image](img/16_oauth_tokens.png)
+
+Once you authorize the installation, you'll land on the OAuth & Permissions page and see a Bot User OAuth Access Token.
+
+![image](img/17_authorized.png)
+
+Then head over to Basic Information and scroll down under the App Token section and click Generate Token and Scopes to generate an app-level token. Add the connections:write scope to this token and save the generated xapp token, we'll use both these tokens in just a moment.
+
+![image](img/18_generate_token.png)
+
+Give it a name and generate
+
+![image](img/19_app_token.png)
+
+Copy the token generated as we will be using it
+
+![image](img/20_copy_token.png)
+
+Navigate to Socket Mode on the left side menu and toggle to enable.
+
+![image](img/21_socket_mode.png)
 
 
 
