@@ -87,5 +87,70 @@ pip install -r requirements.txt
 
 Configure [key-pair authentication](https://docs.snowflake.com/user-guide/key-pair-auth?_fsi=ntnJOu8E&_fsi=ntnJOu8E&_fsi=ntnJOu8E#configuring-key-pair-authentication)
 
+As a summary:
+
+- Generate a Private Key
+
+```code
+openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt
+```
+
+This will generate a rsa_key.p8 file with content like:
+
+```code
+-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCmX9DxUPoNUbTl
+....
+XvaIzWzwExamSwO/GbWtzA==
+-----END PRIVATE KEY-----
+```
+
+- Generate a Public Key
+
+```code
+openssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub
+```
+
+This generate file rsa_key.pub with a content like:
+
+```code
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApl/Q8VD6DVG05Rny1Pk6
+...
+MwIDAQAB
+-----END PUBLIC KEY-----
+```
+
+- Assign the public key to a Snowflake user¶
+
+Login into your Snowflake account used for this hands-on lab. Open a worksheet and run the following ALTER USER SQL after you copy/paste your PUBLIC KEY:
+
+ALTER USER example_user SET RSA_PUBLIC_KEY='MIIBIjANBgkqh...';
+
+### Define your App Variables
+
+In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before:
+
+```code
+DEMO_DATABASE='CC_CORTEX_AGENTS_SUMMIT'
+DEMO_SCHEMA='PUBLIC'
+WAREHOUSE='COMPUTE_WH'
+DEMO_USER='<your-user-name>'
+DEMO_USER_ROLE='ACCOUNTADMIN'
+SEMANTIC_MODEL = "@CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SEMANTIC_FILES/semantic.yaml"
+CORTEX_SEARCH_BIKES = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.BIKES_RAG_TOOL"
+CORTEX_SEARCH_SKI = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SKI_RAG_TOOL"
+ACCOUNT='<your-account-identifier>'
+HOST='<your-account-identifier>.snowflakecomputing.com'
+AGENT_ENDPOINT='https://<your-org>-<your-account>.snowflakecomputing.com/api/v2/cortex/agent:run'
+SLACK_APP_TOKEN='<your-slack-app-token>'
+SLACK_BOT_TOKEN='<your-slack-bot-token>'
+      
+ You may NOT edit below values  
+RSA_PRIVATE_KEY_PATH='rsa_key.p8'
+MODEL = 'claude-3-5-sonnet'
+```
+
+
 
 
