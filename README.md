@@ -1,5 +1,8 @@
 # Building Cortex Agents Hands-On Lab Slack Integration
 
+This is the continuation of the [Building Cortex Agents Hands-On Lab](https://github.com/ccarrero-sf/cortex_agents_summit/tree/main)
+
+Build that lab first in order to have all the tools needed for the Cortex Agent to work. This guide will show how to use that Cortex Agent via Slack
 
 ## 1. Create your own Slack Channel
 
@@ -173,6 +176,15 @@ RSA_PRIVATE_KEY_PATH='rsa_key.p8'
 MODEL = 'claude-3-5-sonnet'
 ```
 
+## Run your Slack App
+
+In your terminal run 
+
+```code
+./slack_bot.sh
+```
+
+Start asking questions in your slack channel
 
 
 
