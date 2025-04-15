@@ -69,6 +69,23 @@ Navigate to Socket Mode on the left side menu and toggle to enable.
 
 ![image](img/21_socket_mode.png)
 
+## Setup your Slack App
+### Clone this repository
+
+Open a Terminal and clone this repository:
+
+git clone https://github.com/ccarrero-sf/cortex_agents_summit_slack
+
+### Setup a Virtual Environment to run your Slack App
+
+```code
+python3 -m venv .venv  
+source .venv/bin/activate  
+pip install -r requirements.txt
+```
+### Configure Key-pair Authentication 
+
+Configure [key-pair authentication](https://docs.snowflake.com/user-guide/key-pair-auth?_fsi=ntnJOu8E&_fsi=ntnJOu8E&_fsi=ntnJOu8E#configuring-key-pair-authentication)
 
 
 
