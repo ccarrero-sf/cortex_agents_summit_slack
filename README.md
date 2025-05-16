@@ -46,7 +46,8 @@ Navigate to the **OAuth & Permissions** on the left sidebar and scroll down to t
 
 ![image](img/15_bot_token.png)
 
-For now, we'll just add one scope: **chat:write**. This grants your app the permission to post messages in channels it's a member of.
+- Add the scope: **chat:write**. This grants your app the permission to post messages in channels it's a member of.
+- Add the scope: **files:write**
 
 Scroll up to the top of the **OAuth & Permissions** page and click **Install App** to Workspace. You'll be led through Slack's OAuth UI, where you should allow your app to be installed to your development workspace.
 
@@ -95,7 +96,40 @@ If you want your bot to listen to messages from everywhere it is added to, choos
 
 Open a Terminal and clone this repository:
 
+```code
 git clone https://github.com/ccarrero-sf/cortex_agents_summit_slack
+
+cd cortex_agents_summit_slack
+
+```
+### Define your App Variables
+
+In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before. Note that you have generated SLACK_APP_TOKEN and SLACK_BOT_TOKEN above.
+
+Your account details are available when you select your account (bottom left) and click on account details:
+
+![image](img/22_account_details.png)
+
+
+```code
+DEMO_DATABASE='CC_CORTEX_AGENTS_SUMMIT'
+DEMO_SCHEMA='PUBLIC'
+WAREHOUSE='COMPUTE_WH'
+DEMO_USER='<your-user-name>'
+DEMO_USER_ROLE='ACCOUNTADMIN'
+SEMANTIC_MODEL = "@CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SEMANTIC_FILES/semantic.yaml"
+CORTEX_SEARCH_BIKES = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.BIKES_RAG_TOOL"
+CORTEX_SEARCH_SKI = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SKI_RAG_TOOL"
+ACCOUNT='<your-account-identifier>'
+HOST='<your-account-identifier>.snowflakecomputing.com'
+AGENT_ENDPOINT='https://<your-org>-<your-account>.snowflakecomputing.com/api/v2/cortex/agent:run'
+SLACK_APP_TOKEN='<your-slack-app-token>'
+SLACK_BOT_TOKEN='<your-slack-bot-token>'
+      
+ You may NOT edit below values  
+RSA_PRIVATE_KEY_PATH='rsa_key.p8'
+MODEL = 'claude-3-5-sonnet'
+```
 
 ### Setup a Virtual Environment to run your Slack App
 
@@ -148,34 +182,7 @@ Login into your Snowflake account used for this hands-on lab. Open a worksheet a
 
 ALTER USER example_user SET RSA_PUBLIC_KEY='MIIBIjANBgkqh...';
 
-### Define your App Variables
 
-In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before. Note that you have generated SLACK_APP_TOKEN and SLACK_BOT_TOKEN above.
-
-Your account details are available when you select your account (bottom left) and click on account details:
-
-![image](img/22_account_details.png)
-
-
-```code
-DEMO_DATABASE='CC_CORTEX_AGENTS_SUMMIT'
-DEMO_SCHEMA='PUBLIC'
-WAREHOUSE='COMPUTE_WH'
-DEMO_USER='<your-user-name>'
-DEMO_USER_ROLE='ACCOUNTADMIN'
-SEMANTIC_MODEL = "@CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SEMANTIC_FILES/semantic.yaml"
-CORTEX_SEARCH_BIKES = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.BIKES_RAG_TOOL"
-CORTEX_SEARCH_SKI = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SKI_RAG_TOOL"
-ACCOUNT='<your-account-identifier>'
-HOST='<your-account-identifier>.snowflakecomputing.com'
-AGENT_ENDPOINT='https://<your-org>-<your-account>.snowflakecomputing.com/api/v2/cortex/agent:run'
-SLACK_APP_TOKEN='<your-slack-app-token>'
-SLACK_BOT_TOKEN='<your-slack-bot-token>'
-      
- You may NOT edit below values  
-RSA_PRIVATE_KEY_PATH='rsa_key.p8'
-MODEL = 'claude-3-5-sonnet'
-```
 
 ## Run your Slack App
 

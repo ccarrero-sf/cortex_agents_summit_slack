@@ -8,8 +8,7 @@ DEBUG = False
 class CortexChat:
     def __init__(self, 
             agent_url: str, 
-            CORTEX_SEARCH_BIKES: str, 
-            CORTEX_SEARCH_SKI: str,
+            search_service: str, 
             semantic_model: str,
             model: str, 
             account: str,
@@ -18,8 +17,7 @@ class CortexChat:
         ):
         self.agent_url = agent_url
         self.model = model
-        self.CORTEX_SEARCH_BIKES = CORTEX_SEARCH_BIKES
-        self.CORTEX_SEARCH_SKI = CORTEX_SEARCH_SKI
+        self.search_service = search_service
         self.semantic_model = semantic_model
         self.account = account
         self.user = user
@@ -34,37 +32,34 @@ class CortexChat:
             'Accept': 'application/json',
             'Authorization': f"Bearer {self.jwt}"
         }
-        data = {
+        data = {       
             "model": self.model,
             "messages": [{"role": "user",
-                      "content": 
-                          [{"type": "text","text": query}]}],
+                    "content": 
+                        [{"type": "text","text": query}]}],
         
-            ##############  MAKE CHANGES HERE for your own services/yamls ##############
             "tools": [
                 {"tool_spec": 
                     {"type": "cortex_analyst_text_to_sql",
                     "name": "Sales Analyst"}},
             
-                {"tool_spec": 
+               {"tool_spec": 
                     {"type": "cortex_search",
-                    "name": "Bikes Product Search"}},
-            
-                {"tool_spec": 
-                    {"type": "cortex_search",
-                    "name": "Ski Product Search"}},
-             
-                ],
+                    "name": "Docs and Images Search"}},
+                
+            ],
             "tool_resources": {
                 "Sales Analyst": 
                     {"semantic_model_file": self.semantic_model},
-                "Bikes Product Search": 
-                    {"name": self.CORTEX_SEARCH_BIKES, "max_results": 2},
-                "Ski Product Search": 
-                    {"name": self.CORTEX_SEARCH_SKI, "max_results": 2},          
-            },
+                "Docs and Images Search": 
+                    {"name": self.search_service, 
+                    "max_results": 3, 
+                    "title_column":"RELATIVE_PATH",
+                    "id_column": "CHUNK_INDEX",
+                    "experimental": {"returnConfidenceScores": True}},
+            },    
             "response_instruction": "You will be asked about bikes or ski specifications or analytical data. Be concise in your answer"
-        }   
+         }
 
         response = requests.post(url, headers=headers, json=data)
 
