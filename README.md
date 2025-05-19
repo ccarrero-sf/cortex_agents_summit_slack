@@ -106,10 +106,15 @@ cd cortex_agents_summit_slack
 
 In your folder, create a file called ".env", copy/paste the following content and add your user, account info and slack tokens that you have generated before. Note that you have generated SLACK_APP_TOKEN and SLACK_BOT_TOKEN above.
 
-Your account details are available when you select your account (bottom left) and click on account details:
+Your account details are available when you select your account (bottom left):
 
 ![image](img/22_account_details.png)
 
+and click on account details. This is one example:
+
+![image](img/23_account_details_2.png)
+
+Example of the **.env** file that you have to fill:
 
 ```code
 DEMO_DATABASE='CC_CORTEX_AGENTS_SUMMIT'
@@ -117,9 +122,8 @@ DEMO_SCHEMA='PUBLIC'
 WAREHOUSE='COMPUTE_WH'
 DEMO_USER='<your-user-name>'
 DEMO_USER_ROLE='ACCOUNTADMIN'
-SEMANTIC_MODEL = "@CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SEMANTIC_FILES/semantic.yaml"
-CORTEX_SEARCH_BIKES = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.BIKES_RAG_TOOL"
-CORTEX_SEARCH_SKI = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SKI_RAG_TOOL"
+SEMANTIC_MODEL = "@CC_CORTEX_AGENTS_SUMMIT.PUBLIC.SEMANTIC_FILES/semantic_search.yaml"
+SEARCH_SERVICE = "CC_CORTEX_AGENTS_SUMMIT.PUBLIC.DOCUMENTATION_TOOL"
 ACCOUNT='<your-account-identifier>'
 HOST='<your-account-identifier>.snowflakecomputing.com'
 AGENT_ENDPOINT='https://<your-org>-<your-account>.snowflakecomputing.com/api/v2/cortex/agent:run'
@@ -130,6 +134,11 @@ SLACK_BOT_TOKEN='<your-slack-bot-token>'
 RSA_PRIVATE_KEY_PATH='rsa_key.p8'
 MODEL = 'claude-3-5-sonnet'
 ```
+
+Here you have an example for the mapping between the account details and the fields in the .env file. Note you need the Account Identifier and the Account Locator:
+
+![image](img/24_mapping.png)
+
 
 ### Setup a Virtual Environment to run your Slack App
 
